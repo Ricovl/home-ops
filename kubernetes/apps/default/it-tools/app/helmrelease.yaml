@@ -62,3 +62,10 @@ spec:
                 service:
                   identifier: app
                   port: http
+
+    persistence:
+      tmpfs:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
+            subPath: tmp
