@@ -69,7 +69,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
-          - host: "{{ .Release.Name }}.${CLUSTER_DOMAIN}"
+          - host: "itools.${CLUSTER_DOMAIN}"
             paths:
               - path: /
                 service:
