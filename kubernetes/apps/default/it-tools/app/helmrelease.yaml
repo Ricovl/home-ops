@@ -16,7 +16,7 @@ spec:
         namespace: flux-system
   install:
     remediation:
-      retries: -1
+      retries: 3
   upgrade:
     cleanupOnFail: true
     remediation:
@@ -54,14 +54,14 @@ spec:
               capabilities:
                 drop:
                   - ALL
-              readOnlyRootFilesystem: false
+              readOnlyRootFilesystem: true
 
     service:
       app:
         controller: it-tools
         ports:
           http:
-            port: &port 8080
+            port: 8080
 
     ingress:
       app:
@@ -69,7 +69,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
-          - host: "itools.${CLUSTER_DOMAIN}"
+          - host: "itools.${SECRET_DOMAIN}"
             paths:
               - path: /
                 service:
